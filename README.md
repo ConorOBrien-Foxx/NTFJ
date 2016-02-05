@@ -8,7 +8,7 @@ A minimalistic and hard-to-use esolang, NTFJ is a stack-based language that impl
  * `#` - `TRUE` - pushes `1` to the stack.
  * `^` - `JUMP` - pops `N`, and moves the index pointer to the `N`th command.
  * `*` - `OUT` - pops `N`, and outputs the character whose char code is `N`.
- * `@` - `BYTE` - pops eight values `V1...V8` and pushes the number `V1*(2^8) + ... + V8*(2^1)`.
+ * `@` - `BYTE` - pops eight values `V1...V8` and pushes the number `V1*(2^8) + ... + V8*(2^1)` OR, if `V1 > 1`, pushes the bits in that number.
  * `(` - `PEEK` - if the top value of the stack is zero, jumps to the next `)`. (Nested loops are not supported as of now.)
  * `)` - `ENDPEEK` - marks the point at which to continue for zero values.
  * `$` - `DROP` - drops the top value of the stack.
