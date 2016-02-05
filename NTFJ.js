@@ -10,7 +10,10 @@ function NTFJStep(code,stack,i){
 		else if(code[i]==3)stack.push(0);
 		else if(code[i]==4){i=stack.pop()-1;}
 		else if(code[i]==5)d.innerHTML+=String.fromCharCode(stack.pop());
-		else if(code[i]==6)stack.push(parseInt([0,0,0,0,0,0,0,0].map(function(){return stack.pop()||0}).reverse().join(""),2));
+		else if(code[i]==6){
+			if(stack[stack.length-1]>1) stack=stack.concat(("00000000"+stack.pop().toString(2)).slice(-8).split("").map(Number))
+			else stack.push(parseInt([0,0,0,0,0,0,0,0].map(function(){return stack.pop()||0}).reverse().join(""),2));
+		}
     else if(code[i]==7)console.log(stack);
     else if(code[i]==8){if(!stack[stack.length-1])while(code[++i]!=9&&i<code.length);}
     else if(code[i]==10){stack.pop();}
