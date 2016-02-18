@@ -15,7 +15,17 @@ function NTFJStep(code,stack,i){
 			else stack.push(parseInt([0,0,0,0,0,0,0,0].map(function(){return stack.pop()||0}).reverse().join(""),2));
 		}
     else if(code[i]==7)console.log(stack);
-    else if(code[i]==8){if(!stack[stack.length-1])while(code[++i]!=9&&i<code.length);}
+    else if(code[i]==8){
+    	var d = 1;
+    	if(!stack[stack.length-1]){
+	    	while(i<code.length){
+	    		i++;
+	    		if(code[i]==9) d--;
+	    		else if(code[i]==8) d++;
+	    		if(!d) break;
+	    	}
+    	}
+    }
     else if(code[i]==10){stack.pop();}
     else if(code[i]==11){r=stack.pop();stack.push(r,r)}
     else if(code[i]==12){stack.push(stack.length)}
