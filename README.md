@@ -17,10 +17,25 @@ A minimalistic and hard-to-use esolang, NTFJ is a stack-based language that impl
  * `` ` `` - debugging tool; logs the state of the stack to the console.
 
 ## Computational class
-It is conjectured that NTFJ is Turing-Complete with a strong body of evidence to support this claim. Also conjectured is that the original 4-byte is Turing-Complete, but it is unknown.
+It is conjectured that NTFJ is Turing-Complete with a strong body of evidence to support this claim. Also conjectured is that the original 4-character is Turing-Complete, but it is unknown.
+
+## Mnemonics
+(We will denote the stack's top element as `B`, and the second-to-top element as `A`.)
+
+ * Negate top of stack: `:|`.
+   * (start) `A B`.
+   * (`:`) `A B B`.
+   * (`|`) `A (B NAND B)` = `A (NOT B)`.
+ * Conjunction (and): `|:|`.
+   * (start) `A B`.
+   * (`|`) `A NAND B`.
+   * (`:|`) `NOT(A NAND B)` = `A AND B`.
+ * Disjunction (or): (unknown)
 
 ## Minification
 
-Let us try to remove as many commands as we can! First, we can remove `~` and `#` and replace it with (say) `&`. Let us have `&` push some values. What should those values be? For an `&` that pushes `0` then `1`, `#` is equivalent to `&|`, as `0|1=1`; `#~` is equivalent to `&|&|&||` and `~~` is equivalent to `&&||`. I do not believe that it is possible to represent a single `~`, which _shouldn't_ be a problem, but it may be.
+Let us try to remove as many commands as we can! Let us remove the non-essentials. Thus, our set becomes `~ # | ^ ( ) $ : @ *`, a set of 10 characters.
 
-Another choice for `&` is for it to push `1` then `1` i.e. two `1`s. Thus, `~` is equivalent to `&|` and `#` is equivalent to `&|&||`. This seems better for instances in which single placings are necessary, but are (of course) longer than the previously mentioned method. For the sake of completion, I will pursue this definition of `&`.
+Observe that (F, &uarr;) is a logically complete set. As thus, `#` can be eliminated, yielding `# = ~~|`.
+
+After some work, one can observe that `$` is equivalent to `::|||:|`.
