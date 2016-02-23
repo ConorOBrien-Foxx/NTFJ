@@ -14,6 +14,7 @@ A minimalistic and hard-to-use esolang, NTFJ is a stack-based language that impl
  * `$` - `DROP` - drops the top value of the stack.
  * `:` - `DUP` - duplicates the top value of the stack.
  * `/` - `LENGTH` - pushes the number of items in the stack.
+ * `%` - `SWITCH` - switches the top two entities on the stack.
  * `` ` `` - debugging tool; logs the state of the stack to the console.
 
 ## Computational class
@@ -30,12 +31,32 @@ It is conjectured that NTFJ is Turing-Complete with a strong body of evidence to
    * (start) `A B`.
    * (`|`) `A NAND B`.
    * (`:|`) `NOT(A NAND B)` = `A AND B`.
- * Disjunction (or): (unknown)
+ * Disjunction (or): `:|%:||`
+   * Because `A OR B = (NOT A) NAND (NOT B)`.
 
 ## Minification
 
-Let us try to remove as many commands as we can! Let us remove the non-essentials. Thus, our set becomes `~ # | ^ ( ) $ : @ *`, a set of 10 characters.
+Let us try to remove as many commands as we can! Let us remove the non-essentials. Thus, our set becomes `~ # | ^ ( ) $ : @ * %`, a set of 11 symbols.
 
 Observe that (F, &uarr;) is a logically complete set. As thus, `#` can be eliminated, yielding `# = ~~|`.
 
-After some work, one can observe that `$` is equivalent to `::|||:|`.
+After some work, one can observe that `$` is equivalent to `::|||:|`. See:
+
+    ( )  A B C
+    (:)  A B C C
+    (:)  A B C C C
+    (|)  A B C (NOT C)
+    (|)  A B (C NAND NOT C)
+     =   A B 1
+    (|)  A (B NAND 1)
+    (:|) A NOT (B NAND 1)
+
+Here is a truth table:
+
+| B | B NAND 1 | NOT (B NAND 1) |
+|:-:|:--------:|:--------------:|
+| 1 |     0    |        1       |
+| 0 |     1    |        0       |
+
+(This also yields a nice identity function, `#:||`.)
+
