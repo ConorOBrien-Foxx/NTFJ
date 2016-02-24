@@ -14,11 +14,18 @@ A minimalistic and hard-to-use esolang, NTFJ is a stack-based language that impl
  * `$` - `DROP` - drops the top value of the stack.
  * `:` - `DUP` - duplicates the top value of the stack.
  * `/` - `LENGTH` - pushes the number of items in the stack.
- * `%` - `SWITCH` - switches the top two entities on the stack.
+ * `{` - `ROTATE` - shifts the stack and pushes it to the front
  * `` ` `` - debugging tool; logs the state of the stack to the console.
 
 ## Computational class
-It is conjectured that NTFJ is Turing-Complete with a strong body of evidence to support this claim. Also conjectured is that the original 4-character is Turing-Complete, but it is unknown.
+<s>It is conjectured that NTFJ is Turing-Complete with a strong body of evidence to support this claim. Also conjectured is that the original 4-character is Turing-Complete, but it is unknown.</s>
+
+With the recent addition of the `ROTATE` command (`{`), NTFJ now meets the general requirements of a turing-complete imperative language:
+
+  1. Has a conditional branch; this is a combination of `(...^)`, which jumps if nonzero. This can be made a "jump if zero" as `:|(...^)`.
+  2. Has the ability to retain an arbitrary amount of memory locations; has `{` to move a member to the top.
+
+
 
 ## Mnemonics
 (We will denote the stack's top element as `B`, and the second-to-top element as `A`.)
