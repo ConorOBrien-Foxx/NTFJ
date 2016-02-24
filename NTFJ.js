@@ -31,7 +31,12 @@ function NTFJStep(code,stack,i){
 	    else if(code[i]==10){stack.pop();}
 	    else if(code[i]==11){r=stack.pop();stack.push(r,r)}
 	    else if(code[i]==12){stack.push(stack.length)}
-	    else if(code[i]==13){var r=stack.shift();stack.push(r);}
+	    else if(code[i]==13){
+	    	var N = stack.pop();
+	    	while(N --> 0){
+	    		var r=stack.shift();stack.push(r);
+	    	}
+	    }
 	    setTimeout(NTFJStep,1,code,stack,i+1)
   } else {
   	k.disabled = false;
@@ -57,7 +62,12 @@ function NTFJ(code,input){
 	    else if(code[i]==10){stack.pop();}
 	    else if(code[i]==11){r=stack.pop();stack.push(r,r)}
 	    else if(code[i]==12){stack.push(stack.length)}
-	    else if(code[i]==13){var r=stack.shift();stack.push(r);}
+	    else if(code[i]==13){
+	    	var N = stack.pop();
+	    	while(N --> 0){
+	    		var r=stack.shift();stack.push(r);
+	    	}
+	    }
 	}
 }
 
