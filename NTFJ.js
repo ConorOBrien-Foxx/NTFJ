@@ -12,8 +12,8 @@ function NTFJStep(code,stack,i){
 		else if(code[i]==5)d.innerHTML+=String.fromCharCode(stack.pop());
 		else if(code[i]==6){
 			if(stack[stack.length-1]>1){
-				var e = ("00000000"+a.pop().toString(2)).slice(-8).split("")
-				a.concat(e.map(Number));
+				var e = ("00000000"+stack.pop().toString(2)).slice(-8).split("")
+				stack = stack.concat(e.map(Number));
 			} else stack.push(parseInt([0,0,0,0,0,0,0,0].map(function(){return stack.pop()||0}).reverse().join(""),2));
 		}
 	    else if(code[i]==7)console.log(stack);
@@ -48,8 +48,8 @@ function NTFJ(code,input){
 		else if(code[i]==5)d.innerHTML+=String.fromCharCode(stack.pop());
 		else if(code[i]==6){
 			if(stack[stack.length-1]>1){
-				var e = ("00000000"+a.pop().toString(2)).slice(-8).split("")
-				a.concat(e.map(Number));
+				var e = ("00000000"+stack.pop().toString(2)).slice(-8).split("")
+				stack = stack.concat(e.map(Number));
 			} else stack.push(parseInt([0,0,0,0,0,0,0,0].map(function(){return stack.pop()||0}).reverse().join(""),2));
 		}
 		else if(code[i]==7)console.log(stack);
