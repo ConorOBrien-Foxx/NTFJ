@@ -14,7 +14,7 @@ A minimalistic and hard-to-use esolang, NTFJ is a stack-based language that impl
  * `$` - `DROP` - drops the top value of the stack.
  * `:` - `DUP` - duplicates the top value of the stack.
  * `/` - `LENGTH` - pushes the number of items in the stack.
- * `{` - `ROTATE` - shifts the stack and pushes it to the front
+ * `{` - `ROTATE` - pops N; shifts the stack and pushes it to the front N times.
  * `` ` `` - debugging tool; logs the state of the stack to the console.
 
 ## Computational class
