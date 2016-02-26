@@ -1,7 +1,7 @@
 // NTFJ
 // By Conor O'Brien and ETHProductions
 
-var COMMANDS = "|#~^*@`()$:/{";
+var COMMANDS = "|#~^*@`()$:/{}";
 
 function NTFJStep(code,stack,i){
 	if(i<code.length){
@@ -36,7 +36,12 @@ function NTFJStep(code,stack,i){
 	    	while(N --> 0){
 	    		var r=stack.shift();stack.push(r);
 	    	}
-	    }
+	    } else if(code[i]==14){
+      	var N = stack.pop();
+        while(N --> 0){
+        	var r=stack.pop();stack.unshift(r);
+        }
+      }
 	    setTimeout(NTFJStep,1,code,stack,i+1)
   } else {
   	k.disabled = false;
@@ -67,7 +72,12 @@ function NTFJ(code,input){
 	    	while(N --> 0){
 	    		var r=stack.shift();stack.push(r);
 	    	}
-	    }
+	    } else if(code[i]==14){
+      	var N = stack.pop();
+        while(N --> 0){
+        	var r=stack.pop();stack.unshift(r);
+        }
+      }
 	}
 }
 
