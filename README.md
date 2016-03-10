@@ -20,7 +20,7 @@ A minimalistic and hard-to-use esolang, NTFJ is a stack-based language that impl
 
 ## Computational class
 
-Let us consider the Turing-complete language [Etre](http://esolangs.org/wiki/Etre); we shall try to translate NTFJ to Etre. (Help! :|)
+Let us consider the Turing-complete language [Etre](http://esolangs.org/wiki/Etre); we shall try to translate NTFJ to Etre. A simple enough task, as it seems: `#}` is roughly equivalent to `-` and some combination of `:|` and `()` could be used to emulate `()`. Roughly, `()` in Etre is `:|(<inner><index>^)`.
 
 ## Mnemonics
 (We will denote the stack's top element as `B`, and the second-to-top element as `A`.)
